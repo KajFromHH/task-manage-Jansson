@@ -42,6 +42,10 @@ A full-stack task management application built for learning DevOps practices inc
 
 ## Run Task manager Locally
 
+ It is recommended to run the application locally before starting CI/CD to quickly identify and resolve issues in the development environment. Running locally allows you to verify basic functionality, catch errors early, and ensure dependencies are correctly configured.
+
+ This step also helps prevent unnecessary CI/CD pipeline failures.
+
 ### 1. Clone repository and install dependencies
 ```bash
 git clone <repo_url>
@@ -89,7 +93,7 @@ The application will be available at:
 
 ## Tasks
 
-Your goal is to implement a  CI/CD pipeline for the Task Management System:
+Your goal is to implement a CI/CD pipeline for the Task Management System:
 
 1. **Set Up a CI/CD Workflow:** (1 points)
    - Use GitHub Actions to automate your workflow.
