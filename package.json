@@ -19,5 +19,8 @@
     "lint:frontend": "cd frontend && npm run lint"
   },
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "vitest": "^3.2.4"
+  }
 }
