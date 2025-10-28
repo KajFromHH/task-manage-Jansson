@@ -101,13 +101,13 @@ Running the locally can help detect issues, misunderstandings and misconfigurati
 The following steps guide you through setting up and running the system on your local machine, using your local Node.js environment. If you prefer, you can also utilize your Docker skills to run both the frontend and the backend in containers.
 
 
-### 1. Clone repository and install dependencies
+### 1. Fork & Clone repository and install dependencies
 
 This project has a monorepo structure with separate frontend and backend directories. Both the frontend and the backend share some dependencies, so [npm workspaces](https://docs.npmjs.com/cli/using-npm/workspaces) are used to manage them efficiently. 
 
 In practice, this means that both parts are techically independent, but their dependencies are installed from the root directory to avoid duplication. You can also run commands for both parts from the root folder.
 
-To install dependencies for both frontend and backend, clone this repository and run `npm run install:all` from the root directory:
+To install dependencies for both frontend and backend, fork this repository and clone your forked repository. Run `npm run install:all` from the root directory:
 
 ```bash
 git clone <repo_url>
