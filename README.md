@@ -110,7 +110,7 @@ In practice, this means that both parts are techically independent, but their de
 To install dependencies for both frontend and backend, fork this repository and clone your forked repository. Run `npm run install:all` from the root directory:
 
 ```bash
-git clone <repo_url>
+git clone <forked_repo_url>
 cd <directory_name>
 npm run install:all
 ```
