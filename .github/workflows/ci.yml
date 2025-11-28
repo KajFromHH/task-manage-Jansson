@@ -1,5 +1,7 @@
 # CI workflow.
 
+name: "CI pipeline for back- and frontend."
+
 on:
     push:
         branches: [main]

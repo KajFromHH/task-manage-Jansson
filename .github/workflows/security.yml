@@ -1,1 +1,42 @@
-#Add CodeQL instructions.
+# Security workflow by using CodeQL analysis.
+
+name: "CodeQL analysis."
+
+on:
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main]
+
+# Manual for Codeql javascript-typescript.
+# Source: https://codeql.github.com/docs/codeql-language-guides/codeql-for-javascript/
+
+jobs:
+    analyze:
+        name: Analyze (${{ matrix.language }}) in the project.
+        runs-on: ubuntu-latest
+        permissions:
+            security-events: write
+            actions: read
+            contents: read
+        strategy:
+            fail-fast: false
+            matrix:
+                include:
+                    - language: javascript-typescript
+                      build-mode: none
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v5
+            # Initializes the CodeQL tools for scanning.
+            - name: Initalize CodeQL
+              uses: github/codeql-action/analyze@v4
+              with:
+                languages: ${{ matrix.language }}
+                build-mode: ${{ matrix.build-mode }}
+            - name: Perform CodeQL Analysis
+              uses: github/codeql-action/analyze@v4
+              with:
+                category: "/language:${{matrix.language}}"
+
+
