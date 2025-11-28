@@ -20,6 +20,20 @@ jobs:
             - name: Build backend.
               working-directory: ./backend
               run: npm run build
+    frontend-ci-pipeline:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v5
+            - uses: actions/setup-node@v6
+              with:
+                node-version: '24'
+            - name: Install dependencies to frontend.
+              working-directory: ./frontend
+              run: npm install
+            - name: Build frontend.
+              working-directory: ./backend
+              run: npm run build
+            
             
                 
                 
