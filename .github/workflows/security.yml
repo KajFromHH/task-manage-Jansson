@@ -46,6 +46,7 @@ jobs:
               working-directory: ./backend
               run: |
                 npm install
+                npm audit fix
                 npm audit --audit-level=info
                 npm audit fix
                 npm audit --audit-level=info
@@ -53,6 +54,7 @@ jobs:
               working-directory: ./frontend
               run: |
                 npm install
+                npm audit fix
                 npm audit --audit-level=info
                 npm audit fix
                 npm audit --audit-level=info
