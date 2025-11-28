@@ -30,7 +30,7 @@ jobs:
               uses: actions/checkout@v5
             # Initializes the CodeQL tools for scanning.
             - name: Initalize CodeQL
-              uses: github/codeql-action/analyze@v3
+              uses: github/codeql-action/init@v3
               with:
                 languages: ${{ matrix.language }}
                 build-mode: ${{ matrix.build-mode }}
