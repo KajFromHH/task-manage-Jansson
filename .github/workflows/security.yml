@@ -38,5 +38,14 @@ jobs:
               uses: github/codeql-action/analyze@v3
               with:
                 category: "/language:${{matrix.language}}"
+            - uses: actions/setup-node@v6
+              with:
+                node-version: '24'
+            - name: Check outdated or vulnerable dependencies in backend.
+              working-directory: ./backend
+              run: |
+                npm install
+                npm audit --audit-level=low
+
 
 
