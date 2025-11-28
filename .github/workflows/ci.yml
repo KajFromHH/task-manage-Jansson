@@ -1,1 +1,25 @@
-# Add instructions.
+# CI workflow.
+
+on:
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main]
+
+jobs:
+    backend-ci-pipeline:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v5
+            - uses: actions/setup-node@v6
+              with:
+                node-version: '24'
+            - name: Install dependencies to backend.
+              working-directory: ./backend
+              run: npm install
+            - name: Build backend.
+              working-directory: ./backend
+              run: npm run build
+            
+                
+                
