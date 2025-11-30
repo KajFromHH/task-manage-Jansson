@@ -47,14 +47,23 @@ jobs:
             - name: Linting frontend.
               working-directory: ./frontend
               run: npm run lint
-    deploy:
+    deploy-backend:
       if: github.event_name == 'push' && github.ref == 'refs/heads/main'
       needs: backend-ci-pipeline
       runs-on: ubuntu-latest
       steps:
-        - name: Deploy to Render
+        - name: Deploy backend to Render
           env:
-            deploy_url: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+            deploy_url: ${{ secrets.RENDER_DEPLOY_BACKEND_HOOK }}
+          run:  curl "$deploy_url"
+    deploy-frontend:
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      needs: frontend-ci-pipeline
+      runs-on: ubuntu-latest
+      steps:
+        - name: Deploy frontend to Render
+          env:
+            deploy_url: ${{ secrets.RENDER_DEPLOY_FRONTEND_HOOK }}
           run:  curl "$deploy_url"
             
                 
