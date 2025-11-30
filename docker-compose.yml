@@ -1,4 +1,32 @@
 services:
-  web:
+  frontend:
+    build: .
+    dockerfile: Dockerfile.fe
+    ports:
+    - "80:80"
+    depends_on:
+    - backend
+    DATABASE_HOST: db
+
+  backend:
+    build: .
+    dockerfile: Dockerfile.be
+    ports:
+    - ""
+    depends_on:
+    - db
+    DATABASE_HOST: db
+    env_file:
+      - .env
 
   db:
+    container_name: postgres
+    image: postgres:alpine
+    ports:
+    - "5432:${DB_PORT}"
+    volumes:
+    - data: /data/db
+    environment:
+    - POSTGRES_DB=${DB_NAME}
+    - POSTGRES_USER=${DB_USER}
+    - POSTGRES_PASSWORD=${DB_PASSWORD}
