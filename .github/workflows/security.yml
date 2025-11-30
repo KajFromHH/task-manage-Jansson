@@ -48,14 +48,10 @@ jobs:
                 npm install
                 npm audit fix
                 npm audit --audit-level=info
-                npm audit fix
-                npm audit --audit-level=info
             - name: Check outdated or vulnerable dependencies in frontend.
               working-directory: ./frontend
               run: |
                 npm install
-                npm audit fix
-                npm audit --audit-level=info
                 npm audit fix
                 npm audit --audit-level=info
 
