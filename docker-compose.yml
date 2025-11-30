@@ -6,16 +6,14 @@ services:
     - "80:80"
     depends_on:
     - backend
-    DATABASE_HOST: db
 
   backend:
     build: .
     dockerfile: Dockerfile.be
     ports:
-    - ""
+    - "5000:5000"
     depends_on:
     - db
-    DATABASE_HOST: db
     env_file:
       - .env
 
@@ -23,10 +21,15 @@ services:
     container_name: postgres
     image: postgres:alpine
     ports:
-    - "5432:${DB_PORT}"
+    - "5432:5432"
     volumes:
-    - data: /data/db
+    - data:/data/db
     environment:
-    - POSTGRES_DB=${DB_NAME}
-    - POSTGRES_USER=${DB_USER}
-    - POSTGRES_PASSWORD=${DB_PASSWORD}
+    - DB_NAME='taskmanagement'
+    - DB_USER='postgres'
+    - DB_PASSWORD='postgres'
+    env_file:
+      - .env
+
+  volumes:
+    data: {}
